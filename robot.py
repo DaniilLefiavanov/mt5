@@ -2,6 +2,7 @@ import MetaTrader5 as mt5
 from datetime import datetime
 import time
 import logging
+import config
 
 """=================================================================================================================="""
 
@@ -13,17 +14,17 @@ class Bot:
 
     creation_date = datetime.now()
 
-    def __init__(self):
+    def __init__(self, name):
+        self.log = EventLog(f'robot.__init__')
+        self.name = name
         # self.strategy = strategy
         self.account = Account()
         self.data_provider = MarketData()
-        self.log = EventLog()
-        self.connect = Terminal()
 
     def run(self):
-        self.connect.connect()
+        log = EventLog(f'robot.{self.name}.run')
         while True:
-            self.log.bot(f"{self} Запущен основной цикл")
+            log.info(f"Запущен основной цикл")
             # Здесь будет основной цикл торговли
             time.sleep(5)
 
@@ -40,11 +41,10 @@ class Terminal:
     Работа с терминалом
     """
 
-    def __init__(self, login, password, server):
-        self.login = login
-        self.password = password
-        self.server = server
-       
+    def __init__(self):
+        self.login = config.login
+        self.password = config.password
+        self.server = config.server
 
     def connect(self):
         # Подключение к MetaTrader 5
@@ -294,9 +294,10 @@ class EventLog:
     Класс для ведения журнала событий, ошибок и торговых операций. Это важно для отладки и анализа работы бота.
     """
 
-    def __init__(self, log_file='bot_log.log'):
+    def __init__(self, name, log_file='bot_log.log'):
         # Настройка логгера
-        self.logger = logging.getLogger('TradingBotLogger')
+        self.name = name
+        self.logger = logging.getLogger(self.name)
         self.logger.setLevel(logging.DEBUG)  # Можно настроить уровень логирования
 
         # Создание обработчика, который пишет логи в файл
@@ -304,13 +305,13 @@ class EventLog:
         file_handler.setLevel(logging.DEBUG)
 
         # Создание формата логирования
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(message)s')
         file_handler.setFormatter(formatter)
 
         # Добавление обработчика к логгеру
         self.logger.addHandler(file_handler)
 
-    def bot(self, message):
+    def info(self, message):
         self.logger.info(message)
 
     def warning(self, message):
@@ -395,11 +396,11 @@ class EventHandler:
         pass
 
 
- 
-
- 
-Terminal.connect(login=25073255, password=r"S6dp\#g:quuR", server="Tickmill-Demo")
+EURUSD = Bot('EURUSD')
 
 
- 
 
+Dima = Terminal()
+Dima.connect()
+
+EURUSD.run()

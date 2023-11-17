@@ -11,7 +11,7 @@ class Strategy:
     def __init__(self):
         pass
 
-    def analyze_candles(self, candles):
-        # Анализирует последние свечи и генерирует торговые сигналы
-        pass
-
+    # def BuyOrderBlock(self, candles):
+    #
+    #     # Анализирует последние свечи и генерирует торговые сигналы
+    #

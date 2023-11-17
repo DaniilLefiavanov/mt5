@@ -1,6 +1,6 @@
-from datetime import datetime
 from terminal import *
 from log import EventLog
+from strategy import Strategy
 import time
 
 
@@ -18,7 +18,8 @@ class Bot:
 
     def __init__(self, name):
         self.name = name
-        # self.strategy = strategy
+        self.strategy = Strategy()
+        log.info(f'{self.strategy} = {Strategy()}')
         self.connect = Terminal()
         self.account = Account()
         self.data_provider = MarketData()

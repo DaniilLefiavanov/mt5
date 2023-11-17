@@ -11,3 +11,4 @@
 2023-11-17 08:08:26,062 - robot - 35 while True: # Вошли в цикл
 2023-11-17 08:08:31,063 - robot - 39 time.sleep(5) # Пауза 5 сек.
 2023-11-17 08:08:31,063 - robot - 35 while True: # Вошли в цикл
+2023-11-17 12:24:07,121 - robot - <strategy.Strategy object at 0x000001ECD2E1E050> = <strategy.Strategy object at 0x000001ECD2E7C810>

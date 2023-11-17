@@ -1,32 +1,42 @@
+from log import *
 import MetaTrader5 as mt5
 from datetime import datetime
-from log import *
 import time
 import config
 
+
+log = EventLog(f'robot')
+
+log.info(f'10 Библиотеки импортированы')
+
 """=================================================================================================================="""
 
-
+log.info(f'13 Создаем класс Бот')
 class Bot:
+
     """
     Этот класс будет ядром вашего бота. Он управляет всеми процессами торговли, используя другие классы.
     """
 
-    creation_date = datetime.now()
+    creation_date = datetime.now(); log.info(f'20 Создали переменную creation_date = {creation_date}')
 
     def __init__(self, name):
-        self.log = EventLog(f'robot.__init__')
+        log.info(f'24 def __init__({self, name})')
         self.name = name
+        log.info(f'26 def __init__({self.name} = {name})')
         # self.strategy = strategy
         self.account = Account()
+        log.info(f'29 {self.account} = Account())')
         self.data_provider = MarketData()
+        log.info(f'31 {self.data_provider} = MarketData())')
 
     def run(self):
-        log = EventLog(f'robot.{self.name}.run')
+        log.info(f'32 def run({self}):')
         while True:
-            log.info(f"Запущен основной цикл")
+            log.info(f'35 while True: # Вошли в цикл')
             # Здесь будет основной цикл торговли
             time.sleep(5)
+            log.info(f'39 time.sleep(5) # Пауза 5 сек.')
 
     # def execute_order(self, order):
     #     # Здесь будет реализация логики выполнения ордеров
@@ -356,8 +366,6 @@ class EventHandler:
 
 
 EURUSD = Bot('EURUSD')
-
-
 
 Dima = Terminal()
 Dima.connect()

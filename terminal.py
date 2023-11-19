@@ -1,8 +1,13 @@
 import MetaTrader5 as mt5
+from log import EventLog
 import config
 
 """=================================================================================================================="""
 
+log = EventLog()
+
+"""=================================================================================================================="""
+log.info()
 
 class Terminal:
     """
@@ -29,10 +34,10 @@ class Terminal:
         mt5.shutdown()
         print("Инициализация прервана MT5")
 
-    def get_market_data(self, symbol, timeframe, number_of_candles):
+    def candles(self, symbol, timeframe, start_pos, count):
         # Получение исторических данных в виде свечей
-        rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, number_of_candles)
-        return rates
+        array = mt5.copy_rates_from_pos(symbol, eval(f"mt5.TIMEFRAME_{timeframe}"), start_pos, count)
+        return array
 
     def send_order(self, symbol, order_type, volume, price=None, stop_loss=None, take_profit=None):
         # Отправка ордера

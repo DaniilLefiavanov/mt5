@@ -1,14 +1,4 @@
-2023-11-17 08:08:21,053 - robot - 10 Библиотеки импортированы
-2023-11-17 08:08:21,053 - robot - 13 Создаем класс Бот
-2023-11-17 08:08:21,053 - robot - 20 Создали переменную creation_date = 2023-11-17 08:08:21.053161
-2023-11-17 08:08:21,054 - robot - 24 def __init__((<__main__.Bot object at 0x000002067B58A7D0>, 'EURUSD'))
-2023-11-17 08:08:21,054 - robot - 26 def __init__(EURUSD = EURUSD)
-2023-11-17 08:08:21,054 - robot - 29 <__main__.Account object at 0x000002066324DD90> = Account())
-2023-11-17 08:08:21,054 - robot - 31 <__main__.MarketData object at 0x000002067B2A5810> = MarketData())
-2023-11-17 08:08:21,062 - robot - 32 def run(<__main__.Bot object at 0x000002067B58A7D0>):
-2023-11-17 08:08:21,062 - robot - 35 while True: # Вошли в цикл
-2023-11-17 08:08:26,062 - robot - 39 time.sleep(5) # Пауза 5 сек.
-2023-11-17 08:08:26,062 - robot - 35 while True: # Вошли в цикл
-2023-11-17 08:08:31,063 - robot - 39 time.sleep(5) # Пауза 5 сек.
-2023-11-17 08:08:31,063 - robot - 35 while True: # Вошли в цикл
-2023-11-17 12:24:07,121 - robot - <strategy.Strategy object at 0x000001ECD2E1E050> = <strategy.Strategy object at 0x000001ECD2E7C810>
+2023-11-17 20:09:46,897 - robot - 23232
+2023-11-17 20:09:46,897 - robot - 23232
+2023-11-17 20:14:12,893 - robot - 23232
+2023-11-17 20:14:12,893 - robot - 23232

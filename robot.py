@@ -6,10 +6,10 @@ import time
 
 """=================================================================================================================="""
 
-log = EventLog(f'robot')
+log = EventLog(_)
 
 """=================================================================================================================="""
-
+log.info(f'23232')
 
 class Bot:
     """
@@ -19,20 +19,15 @@ class Bot:
     def __init__(self, name):
         self.name = name
         self.strategy = Strategy()
-        log.info(f'{self.strategy} = {Strategy()}')
-        self.connect = Terminal()
+        self.terminal = Terminal()
         self.account = Account()
-        self.data_provider = MarketData()
+
 
     def run(self):
 
         while True:
             # Здесь будет основной цикл торговли
             time.sleep(5)
-
-    # def execute_order(self, order):
-    #     # Здесь будет реализация логики выполнения ордеров
-    #     pass
 
 
 """=================================================================================================================="""
@@ -51,27 +46,6 @@ class Account:
     def update_balance(self, amount):
         # Обновление баланса счета
         pass
-
-
-"""=================================================================================================================="""
-
-
-class MarketData:
-    """
-    Этот класс занимается получением и обработкой данных рынка.
-    """
-
-    def __init__(self):
-        self.current_data = {}
-        self.candles = []
-
-    def update_data(self):
-        # Здесь будет логика обновления и получения рыночных данных
-        pass
-
-    def get_last_candles(self, number):
-        # Возвращает последние свечи, указать количество
-        return self.candles[-number:]
 
 
 """=================================================================================================================="""
@@ -177,9 +151,8 @@ class EventHandler:
         pass
 
 
-EURUSD = Bot('EURUSD')
+bot = Bot('EURUSD')
+log.info(f'{bot.name}')
 
-Dima = Terminal()
-Dima.connect()
+bot.terminal.connect()
 
-EURUSD.run()

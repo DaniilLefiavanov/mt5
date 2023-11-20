@@ -1,20 +1,23 @@
-
-from log import EventLog
 from terminal import *
 
-log = EventLog()
+
+"""=================================================================================================================="""
+
+log = EventLog('Bot')
+
+"""=================================================================================================================="""
 
 
-class MarketData:
+class Data:
 
-    def __init__(self, name):
-        self.log.info(f'{self, name}')
-        self.name = name
-        self.terminal = Terminal()
-        logging.info(f'self.array = {self.terminal}')
+    def __init__(self, symbol):
+        self.symbol = symbol
+        # self.connect = Terminal(symbol).connect()
+        self.array = Terminal(symbol).array()
 
 
-market = MarketData('market')
+# data = Data('EURUSD')
 
-array = market.terminal.market_data('EURUSD', mt5.TIMEFRAME_H1, 0, 1000)
-logging.info(f'market')
+# print(data.symbol)
+# data.connect
+

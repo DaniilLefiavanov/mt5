@@ -1,20 +1,19 @@
 import MetaTrader5 as mt5
-from log import EventLog
+from log import *
 import config
 
 """=================================================================================================================="""
 
-log = EventLog()
+log = EventLog('Terminal')
 
 """=================================================================================================================="""
-log.info()
+# log.info()
+
 
 class Terminal:
-    """
-    Работа с терминалом
-    """
 
-    def __init__(self):
+    def __init__(self, symbol):
+        self.symbol = symbol
         self.login = config.login
         self.password = config.password
         self.server = config.server
@@ -37,6 +36,11 @@ class Terminal:
     def candles(self, symbol, timeframe, start_pos, count):
         # Получение исторических данных в виде свечей
         array = mt5.copy_rates_from_pos(symbol, eval(f"mt5.TIMEFRAME_{timeframe}"), start_pos, count)
+        return array
+
+    def array(self):
+        # Получение исторических данных в виде свечей
+        array = mt5.copy_rates_from_pos(self.symbol, eval(f"mt5.TIMEFRAME_H1"), 0, 3)
         return array
 
     def send_order(self, symbol, order_type, volume, price=None, stop_loss=None, take_profit=None):
